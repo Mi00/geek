@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <h1>Games</h1><%= link_to 'New Game', new_game_path, class: 'btn btn-primary' %>
+</div>
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Create Table</th>
+        <th>Name</th>
+        <th>Min players</th>
+        <th>Max players</th>
+        <th>Game time</th>
+        <th>Lang</th>
+        <th>Description</th>
+        <th>Image url</th>
+        <th colspan="3"></th>        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= link_to 'Create Table', new_table_path(game: game.id), class: 'btn btn-warning' %></td>
+          <td><%= game.name %></td>
+          <td><%= game.min_players %></td>
+          <td><%= game.max_players %></td>
+          <td><%= game.game_time.to_s(:time) %></td>
+          <td><%= game.lang %></td>
+          <td><%= game.description %></td>
+          <td><%= image_tag game.image_url, size: "100x100" %></td>
+          <td><%= link_to 'Show', game %></td>
+          <td><%= link_to 'Edit', edit_game_path(game) %></td>
+          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  
+</div>

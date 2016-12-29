@@ -1,0 +1,62 @@
+<%= form_for(game, html: {class: 'form-horizontal'}) do |f|  %>
+  <% if game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.text_field :name, class: 'form-control' %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :min_players, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.number_field :min_players, class: 'form-control' %></div>
+  
+  </div>
+
+  <div class="form-group">
+    <%= f.label :max_players, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.number_field :max_players, class: 'form-control' %></div>
+  
+  </div>
+
+  <div class="form-group">
+    <%= f.label :game_time, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.time_select :game_time, class: 'form-control' %></div>
+  
+  </div>
+
+  <div class="form-group">
+    <%= f.label :lang, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.text_field :lang, class: 'form-control' %></div>
+  
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.text_area :description, class: 'form-control' %></div>
+  
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image_url, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.text_field :image_url, class: 'form-control' %></div>
+  
+  </div>
+
+  
+    <%= f.hidden_field :user_id, value: @user.id %>
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

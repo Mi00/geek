@@ -1,19 +1,82 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1><%= @event.date.to_formatted_s(:long_ordinal) %></h1>
+	</div>
+</div>
+<br>
+&nbsp;
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h2><%= @event.name %></h2>
+	</div>
+</div>
+<br>
+&nbsp;
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h3>Dodane stoliki na ten event</h3>
+	</div>
+</div>
+&nbsp;
+&nbsp;
+<% @tables.each do |table| %>
+<div class="row">
+	<div class="col-md-12 panel-group">
+		<div class="col-md-6 panel panel-primary">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-md-6"><h4 class="text-left">Game: <%= table.name %></h4></div>
+					<div class="col-md-6"><h4 class="text-right">Owner: <%= table.owner %></h4></div>
+				</div>
+			</div>
+			<% if table.table_players.size >= table.game.min_players && table.table_players.size < table.game.max_players %>		
+			<div class="panel-body enough">
+			<% elsif table.table_players.size < table.game.min_players %>
+			<div class="panel-body notenough">
+			<% elsif table.table_players.size == table.game.max_players %>
+			<div class="panel-body closed">
+			<% end %>
+				<% table.table_players.each do |player| %>			
+					<div class="col-md-6 player">
+						<%= image_tag showimage(player.user_id), class: 'img-circle' %><%= showname(player.user_id) %>
+					</div>	
+				<% end %>
+				<div class="col-md-4 player">
+						<% if !current_user.nil? && table.table_players.exists?(user_id: current_user.id) %>
+							<%= link_to "Opuść stół", TablePlayer.where(table_id: table.id, user_id: current_user.id).first, method: :delete,  class: 'btn btn-success' %>
+						<% elsif !current_user.nil? %>
+							<%= button_to "Dołącz", table_players_path(table_id: table.id), class: 'btn btn-success' %>
+						<% end %>
+				</div>
+			</div>
+		</div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+		<div class="col-md-6 desc">
+			<div class="row">
+				<div class="col-md-5"><%= image_tag(table.game.image_url, size: 170, class: "img-thumbnail") %></div>
+				<div class="col-md-5"><strong>Liczba graczy:</strong><br>
+					<%= table.game.min_players %> - <%= table.game.max_players %><br>
+					<strong>Czas gry:</strong><br>
+					<%= time_in_minutes(table.game.game_time) %> min<br>
+					<strong>Wersja jezykowa:</strong><br>
+					<%= table.game.lang %><br>
+					 
+					<% if !current_user.nil? && table.owner == current_user.name %>
+						<%= link_to 'Edit', edit_table_path(game: table.game), class: 'btn btn-warning' %>
+						<%= link_to 'destroy', table, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+					<% end %>
+					
+					</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10" style="max-height: 10vmin; overflow-y: scroll;"><h4 style="font-weight: bold;">Opis:</h4>
+						<%= table.game.description %></div>
+			</div>
+		</div>
+	</div>
+</div>
+&nbsp;
+&nbsp;
+<% end %>

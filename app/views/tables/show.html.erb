@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @table.name %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @table.owner %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @table.game %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @table.user %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @table.event %>
+</p>
+
+<%= link_to 'Edit', edit_table_path(@table) %> |
+<%= link_to 'Back', tables_path %>

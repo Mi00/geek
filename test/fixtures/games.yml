@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  min_players: 1
+  max_players: 1
+  game_time: 2016-12-29 13:26:35
+  lang: MyString
+  description: MyString
+  image_url: MyString
+  user: one
+
+two:
+  name: MyString
+  min_players: 1
+  max_players: 1
+  game_time: 2016-12-29 13:26:35
+  lang: MyString
+  description: MyString
+  image_url: MyString
+  user: two

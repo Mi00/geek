@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.login {
+	float: left;
+}
+.before {
+	background-color: rgb(169, 242, 179);
+}
+.after {
+	background-color: rgb(242, 169, 169);
+}
+
+.event {
+	text-align: center;
+}
+.panel-body {
+	min-height: 220px;
+}
+.panel-primary {
+	padding: 0;
+}
+h4.panel-heading {
+	display: inline;
+}
+.enough {
+	background-color: rgb(176, 242, 96);
+}
+.closed {
+	background-color: rgb(237, 99, 99);
+}
+.notenough {
+	background-color: rgb(234, 237, 104);
+}

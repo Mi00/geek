@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+
+<p>
+  <strong>Min players:</strong>
+  <%= @game.min_players %>
+</p>
+
+<p>
+  <strong>Max players:</strong>
+  <%= @game.max_players %>
+</p>
+
+<p>
+  <strong>Game time:</strong>
+  <%= @game.game_time.to_s(:time) %>
+</p>
+
+<p>
+  <strong>Lang:</strong>
+  <%= @game.lang %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @game.description %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @game.image_url %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @game.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

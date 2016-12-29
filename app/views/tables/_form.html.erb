@@ -1,0 +1,35 @@
+<%= form_for(table, html: {class: 'form-horizontal'}) do |f| %>
+  <% if table.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(table.errors.count, "error") %> prohibited this table from being saved:</h2>
+
+      <ul>
+      <% table.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.text_field :name, value: @game.name, class: 'form-control' %></div>
+  </div>
+    <%= f.hidden_field :owner, value: @user.name %>
+    
+    <%= f.hidden_field :game_id, value: @game.id %>
+  
+
+    <%= f.hidden_field :user_id, value: @user.id %>
+  
+
+  <div class="form-group">
+    <%= f.label :event_id, class: 'col-md-1 control-label' %>
+    <div class="col-md-10"><%= f.select :event_id, options_from_collection_for_select(@events, "id", "name", "date"), {}, {class: 'form-control'} %></div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

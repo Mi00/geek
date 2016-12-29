@@ -5,11 +5,17 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+  
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    if !current_user.nil?
+      @user = User.find(current_user.id)
+    end
+    
+    @tables = Event.find(params[:id]).tables   
   end
 
   # GET /events/new
@@ -69,6 +75,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :date, :location)
+      params.require(:event).permit(:name, :date, :user_id, :place)
     end
 end
