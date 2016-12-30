@@ -12,51 +12,54 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, class: 'col-md-1 control-label' %>
+    <%= f.label 'Nazwa', class: 'col-md-2 control-label' %>
     <div class="col-md-10"><%= f.text_field :name, class: 'form-control' %></div>
   </div>
 
   <div class="form-group">
-    <%= f.label :min_players, class: 'col-md-1 control-label' %>
+    <%= f.label 'Min ilość graczy', class: 'col-md-2 control-label' %>
     <div class="col-md-10"><%= f.number_field :min_players, class: 'form-control' %></div>
   
   </div>
 
   <div class="form-group">
-    <%= f.label :max_players, class: 'col-md-1 control-label' %>
+    <%= f.label 'Max ilość graczy', class: 'col-md-2 control-label' %>
     <div class="col-md-10"><%= f.number_field :max_players, class: 'form-control' %></div>
   
   </div>
 
   <div class="form-group">
-    <%= f.label :game_time, class: 'col-md-1 control-label' %>
-    <div class="col-md-10"><%= f.time_select :game_time, class: 'form-control' %></div>
+    <%= f.label 'Czas gry(godz:min)', class: 'col-md-2 control-label' %>
+    <div class="col-md-10"><%= f.time_select :game_time, class: 'form-control', minute_step: 10, start_hour: 0, end_hour: 10 %></div>
   
   </div>
 
   <div class="form-group">
-    <%= f.label :lang, class: 'col-md-1 control-label' %>
+    <%= f.label 'Język', class: 'col-md-2 control-label' %>
     <div class="col-md-10"><%= f.text_field :lang, class: 'form-control' %></div>
   
   </div>
 
   <div class="form-group">
-    <%= f.label :description, class: 'col-md-1 control-label' %>
+    <%= f.label 'Opis', class: 'col-md-2 control-label' %>
     <div class="col-md-10"><%= f.text_area :description, class: 'form-control' %></div>
   
   </div>
 
   <div class="form-group">
-    <%= f.label :image_url, class: 'col-md-1 control-label' %>
-    <div class="col-md-10"><%= f.text_field :image_url, class: 'form-control' %></div>
+    <%= f.label 'Obrazek', class: 'col-md-2 control-label' %>
+    <div class="col-md-10"><%= f.text_field :image_url, class: 'form-control', placeholder: 'Podaj link do obrazka' %></div>
   
   </div>
 
   
     <%= f.hidden_field :user_id, value: @user.id %>
   
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5 text-center">
+      <div class="actions">
+        <%= f.submit "Stwórz grę", class: 'btn btn-warning' %>
+      </div>
+    </div>
   </div>
 <% end %>

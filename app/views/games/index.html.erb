@@ -1,19 +1,25 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
-  <h1>Games</h1><%= link_to 'New Game', new_game_path, class: 'btn btn-primary' %>
+  <div class="col-md-4 col-md-offset-4">
+    <h1 class="text-center">Twoje Gry</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 text-center">
+    <%= link_to 'Stwórz nową gre', new_game_path, class: 'btn btn-primary' %>
+  </div>
 </div>
 <div class="row">
   <table class="table">
     <thead>
       <tr>
-        <th>Create Table</th>
-        <th>Name</th>
-        <th>Min players</th>
-        <th>Max players</th>
-        <th>Game time</th>
-        <th>Lang</th>
-        <th>Description</th>
-        <th>Image url</th>
+        <th>Stwórz stolik</th>
+        <th>Nazwa</th>
+        <th>Min ilość graczy</th>
+        <th>Max ilość graczy</th>
+        <th>Czas rozgrywki</th>
+        <th>Język</th>
+        <th>Opis</th>
+        <th>Obrazek</th>
         <th colspan="3"></th>        
       </tr>
     </thead>
@@ -21,7 +27,7 @@
     <tbody>
       <% @games.each do |game| %>
         <tr>
-          <td><%= link_to 'Create Table', new_table_path(game: game.id), class: 'btn btn-warning' %></td>
+          <td><%= link_to 'Stwórz stolik', new_table_path(game: game.id), class: 'btn btn-warning' %></td>
           <td><%= game.name %></td>
           <td><%= game.min_players %></td>
           <td><%= game.max_players %></td>
@@ -29,9 +35,9 @@
           <td><%= game.lang %></td>
           <td><%= game.description %></td>
           <td><%= image_tag game.image_url, size: "100x100" %></td>
-          <td><%= link_to 'Show', game %></td>
-          <td><%= link_to 'Edit', edit_game_path(game) %></td>
-          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Pokaż', game %></td>
+          <td><%= link_to 'Edytuj', edit_game_path(game) %></td>
+          <td><%= link_to 'Usuń', game, method: :delete, data: { confirm: 'Usunąć?' } %></td>
         </tr>
       <% end %>
     </tbody>

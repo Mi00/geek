@@ -1,44 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @game.name %>
-</p>
-
-<p>
-  <strong>Min players:</strong>
-  <%= @game.min_players %>
-</p>
-
-<p>
-  <strong>Max players:</strong>
-  <%= @game.max_players %>
-</p>
-
-<p>
-  <strong>Game time:</strong>
-  <%= @game.game_time.to_s(:time) %>
-</p>
-
-<p>
-  <strong>Lang:</strong>
-  <%= @game.lang %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @game.description %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @game.image_url %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @game.user.name %>
-</p>
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-md-offset-3">
+    <div class="thumbnail">
+      <%= image_tag @game.image_url, size: "200" %>
+      <div class="caption">
+        <h2 class="text-center">Nazwa: <%= @game.name %></h2>
+        <h3 class="text-center">Ilość graczy: <%= @game.min_players %> - <%= @game.max_players %></h3>
+        <h3 class="text-center">Język: <%= @game.lang %></h3>
+        <h3 class="text-center">Czas gry: <%= @game.game_time.to_s(:time) %></h3>
+        <p><%= @game.description %></p>
+        <p class="text-center"><%= link_to 'Edytuj', edit_game_path(@game), class: 'btn btn-primary' %> |
+           <%= link_to 'Lista gier', games_path, class: 'btn btn-default' %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
