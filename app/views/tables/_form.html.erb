@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, class: 'col-md-1 control-label' %>
+    <%= f.label 'Nazwa stołu', class: 'col-md-2 control-label' %>
     <div class="col-md-10"><%= f.text_field :name, value: @game.name, class: 'form-control' %></div>
   </div>
     <%= f.hidden_field :owner, value: @user.name %>
@@ -24,12 +24,16 @@
   
 
   <div class="form-group">
-    <%= f.label :event_id, class: 'col-md-1 control-label' %>
+    <%= f.label 'Wybierz event', class: 'col-md-2 control-label' %>
     <div class="col-md-10"><%= f.select :event_id, options_from_collection_for_select(@events, "id", "name", "date"), {}, {class: 'form-control'} %></div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5 text-center">
+      <div class="actions">
+        <%= f.submit "Stwórz stół", class: 'btn btn-warning' %>
+      </div>
+    </div>
   </div>
 <% end %>
 

@@ -11,18 +11,18 @@
   <body>
     <div class="container">
       <div id="row">
-        <div class="col-md-1"><%= link_to "Events", events_path, class: "btn btn-default navbar-btn" %></div>
+        <div class="col-md-2"><%= link_to "Wydarzenia", events_path, class: "btn btn-default navbar-btn btn-lg" %></div>
         <% if current_user %>
-          <div class="col-md-1"><%= link_to "Games", games_path, class: "btn btn-default navbar-btn" %></div>
-          <div class="col-md-4 col-md-offset-4">
-          Witaj <strong><%= current_user.name %><%= image_tag current_user.image %></strong>!
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
-        <% else %>
-          <div class="col-md-2">
-          <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+          <div class="col-md-2"><%= link_to "Moje gry", games_path, class: "btn btn-default navbar-btn btn-lg" %></div>
+          <div class="col-md-6 col-md-offset-2 text-center">
+            <h4>Witaj <strong><%= current_user.name %><%= image_tag current_user.image %></strong>!
+            <%= link_to "Wyloguj sie", signout_path, id: "sign_out" %></h4>
           </div>
-        <% end %>
-        </div>
+        <% else %>
+          <div class="col-md-4 col-md-offset-6">
+          <h3><%= link_to "Zaloguj mnie przez Facebook'a", "/auth/facebook", id: "sign_in" %></h3>
+          </div>
+        <% end %>        
       </div>
         <%= yield %>
     </div>
