@@ -32,7 +32,7 @@ class TablePlayersController < ApplicationController
 
     respond_to do |format|
       if @table_player.save
-        format.html { redirect_to event_path(@event), notice: 'Table player was successfully created.' }
+        format.html { redirect_to table_path(@table), notice: 'Table player was successfully created.' }
         format.json { render :show, status: :created, location: @table_player }
       else
         format.html { render :new }
@@ -58,10 +58,10 @@ class TablePlayersController < ApplicationController
   # DELETE /table_players/1
   # DELETE /table_players/1.json
   def destroy
-    @event = @table_player.table.event
+    @table = @table_player.table
     @table_player.destroy
     respond_to do |format|
-      format.html { redirect_to @event, notice: 'Table player was successfully destroyed.' }
+      format.html { redirect_to @table, notice: 'Table player was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

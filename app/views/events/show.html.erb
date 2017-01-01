@@ -37,16 +37,14 @@
 			<div class="panel-body closed">
 			<% end %>
 				<% table.table_players.each do |player| %>			
-					<div class="col-md-6 player">
+					<div class="col-md-6 player text-center">
 						<%= image_tag showimage(player.user_id), class: 'img-circle' %><%= showname(player.user_id) %>
 					</div>	
 				<% end %>
-				<div class="col-md-4 player">
-						<% if !current_user.nil? && table.table_players.exists?(user_id: current_user.id) %>
-							<%= link_to "Opuść stół", TablePlayer.where(table_id: table.id, user_id: current_user.id).first, method: :delete,  class: 'btn btn-success' %>
-						<% elsif !current_user.nil? %>
-							<%= button_to "Dołącz", table_players_path(table_id: table.id), class: 'btn btn-success' %>
-						<% end %>
+				<div class="col-md-12 player text-center">
+					<%= link_to table_path(table), class: 'btn btn-warning btn-lg' do %>	
+						Pokaż stół i komentarze<span class="badge"><%= table.comments.count %></span>
+					<% end %>					
 				</div>
 			</div>
 		</div>

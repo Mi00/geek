@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :tables
+  resources :tables do
+  	resources :comments
+  end
+  resources :comments
   resources :games
   resources :events
   resources :table_players

@@ -10,13 +10,8 @@ module EventsHelper
 		return t
 	end
 
-	def showname(id)
-		user = User.find(id).name
-	end
 
-	def showimage(id)
-		img = User.find(id).image
-	end
+	
 	def userexist?(id)
 		TablePlayer.where(table_id: id, user_id: current_user.id).present?				
 	end

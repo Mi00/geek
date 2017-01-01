@@ -3,6 +3,7 @@ class User < ApplicationRecord
 	has_many :tables
 	has_many :games
 	has_many :table_players
+	has_many :comments
 
 	def self.from_omniauth(auth)
 	   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

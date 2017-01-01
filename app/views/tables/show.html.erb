@@ -1,0 +1,82 @@
+&nbsp;
+&nbsp;
+<div class="row">
+  <div class="col-md-12 text-center">
+    <%= link_to 'Wróć do wydarzenia', event_path(@table.event_id), class: 'btn btn-default btn-lg' %>
+  </div>
+</div>
+&nbsp;
+<div class="row">
+  <div class="col-md-12 panel-group">
+    <div class="col-md-6 panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6"><h4 class="text-left">Stół: <%= @table.name %></h4></div>
+          <div class="col-md-6"><h4 class="text-right">Właściciel: <%= @table.owner %></h4></div>
+        </div>
+      </div>
+      <% if @table.table_players.size >= @table.game.min_players && @table.table_players.size < @table.game.max_players %>    
+      <div class="panel-body enough">
+      <% elsif @table.table_players.size < @table.game.min_players %>
+      <div class="panel-body notenough">
+      <% elsif @table.table_players.size == @table.game.max_players %>
+      <div class="panel-body closed">
+      <% end %>
+        <% @table.table_players.each do |player| %>      
+          <div class="col-md-6 player text-center">
+            <%= image_tag showimage(player.user_id), class: 'img-circle' %><%= showname(player.user_id) %>
+          </div>  
+        <% end %>
+        <div class="col-md-4 player text-center">
+            <% if !current_user.nil? && @table.table_players.exists?(user_id: current_user.id) %>
+              <%= link_to "Opuść stół", TablePlayer.where(table_id: @table.id, user_id: current_user.id).first, method: :delete,  class: 'btn btn-danger' %>
+            <% elsif !current_user.nil? %>
+              <%= button_to "Dołącz", table_players_path(table_id: @table.id), class: 'btn btn-success' %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 desc">
+      <div class="row">
+        <div class="col-md-5"><%= image_tag(@table.game.image_url, size: 170, class: "img-thumbnail") %></div>
+        <div class="col-md-5"><strong>Liczba graczy:</strong><br>
+          <%= @table.game.min_players %> - <%= @table.game.max_players %><br>
+          <strong>Czas gry:</strong><br>
+          <%= time_in_minutes(@table.game.game_time) %> min<br>
+          <strong>Wersja jezykowa:</strong><br>
+          <%= @table.game.lang %><br>
+           
+          <% if !current_user.nil? && @table.owner == current_user.name %>
+            <%= link_to 'Edytuj', edit_table_path(game: @table.game), class: 'btn btn-warning' %>
+            <%= link_to 'Usuń', @table, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+          
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10" style="max-height: 10vmin; overflow-y: scroll;"><h4 style="font-weight: bold;">Opis:</h4>
+            <%= @table.game.description %></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <h3 class="comments_title col-md-12 text-center">
+    <%= @table.comments.count %> Comments
+  </h3>
+
+  <div id="comments">
+    <%= render :partial => @table.comments %>
+  </div>
+
+  <%= simple_form_for [@table, Comment.new] do |f| %>
+    <div class="field">
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+    <br>
+    <div class="text-center">
+      <%= f.submit "Add Comment", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
