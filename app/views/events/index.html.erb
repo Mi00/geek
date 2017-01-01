@@ -37,7 +37,7 @@
           </td>
           <td class="event">
             <%= link_to "Pokaż", event_path(event.id), class: 'btn btn-primary' %>
-            <% if !current_user.nil? && current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tłusty' %>
+            <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tłusty') %>
               <%= link_to 'Edit', edit_event_path(event.id), class: 'btn btn-warning' %>
               <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
             <% end %>
