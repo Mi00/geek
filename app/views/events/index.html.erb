@@ -4,7 +4,7 @@
   <div class="col-md-12">
     <h2 class="event tables">Spotkania przed nami</h2>
   </div>
-  <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tłusty') %>
+  <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tlusty') %>
     <div class="col-md-12 text-center">
       <%= link_to 'Nowe wydarzenie', new_event_path, class: 'btn btn-info' %>
     </div>
@@ -37,7 +37,7 @@
           </td>
           <td class="event">
             <%= link_to "Pokaż", event_path(event.id), class: 'btn btn-primary' %>
-            <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tłusty') %>
+            <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tlusty') %>
               <%= link_to 'Edytuj', edit_event_path(event.id), class: 'btn btn-warning' %>
               <%= link_to 'Usuń', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
             <% end %>
@@ -80,7 +80,7 @@
           </td>
           <td class="event">
             <%= link_to "Pokaż", event_path(event.id), class: 'btn btn-primary' %>
-            <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tłusty') %>
+            <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tlusty') %>
               <%= link_to 'Edytuj', edit_event_path(event.id), class: 'btn btn-warning' %>
               <%= link_to 'Usuń', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
             <% end %>

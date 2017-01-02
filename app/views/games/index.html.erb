@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class="col-md-4 col-md-offset-4 text-center">
-    <%= link_to 'Stwórz nową gre', new_game_path, class: 'btn btn-primary' %>
+    <%= link_to 'Stwórz nową gre', new_game_path, class: 'btn btn-success' %>
   </div>
 </div>
 <div class="row">
@@ -35,9 +35,9 @@
           <td><%= game.lang %></td>
           <td><%= game.description %></td>
           <td><%= image_tag game.image_url, size: "100x100" %></td>
-          <td><%= link_to 'Pokaż', game %></td>
-          <td><%= link_to 'Edytuj', edit_game_path(game) %></td>
-          <td><%= link_to 'Usuń', game, method: :delete, data: { confirm: 'Usunąć?' } %></td>
+          <td><%= link_to 'Pokaż', game, class: 'btn btn-success' %></td>
+          <td><%= link_to 'Edytuj', edit_game_path(game), class: 'btn btn-warning' %></td>
+          <td><%= link_to 'Usuń', game, method: :delete, data: { confirm: 'Usunąć?' }, class: 'btn btn-danger' %></td>
         </tr>
       <% end %>
     </tbody>
