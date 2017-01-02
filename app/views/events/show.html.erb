@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12 text-center">
-		<h1><%= @event.date.to_formatted_s(:long_ordinal) %></h1>
+		<h1><%= I18n.l @event.date, format: "%d %B %Y", locale: :pl %> Godzina: <%= @event.date.to_s(:time) %></h1>
 	</div>
 </div>
 &nbsp;
@@ -13,7 +13,7 @@
 &nbsp;
 
 <div class="row">
-	<div class="col-md-12 text-center">
+	<div class="col-md-12 text-center tables">
 		<h3>Dodane stoliki na ten event</h3>
 	</div>
 </div>
@@ -61,7 +61,7 @@
 					 
 					<% if !current_user.nil? && table.owner == current_user.name %>
 						<%= link_to 'Edytuj', edit_table_path(game: table.game), class: 'btn btn-warning' %>
-						<%= link_to 'Usuń', table, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+						<%= link_to 'Usuń', table, method: :delete, data: { confirm: 'Usunąć?' }, class: 'btn btn-danger' %>
 					<% end %>
 					
 					</div>
