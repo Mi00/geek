@@ -6,4 +6,8 @@ module ApplicationHelper
 	def showimage(id)
 		img = User.find(id).image
 	end
+
+	def event_date(date)
+		Time.now.strftime("%e-%m-%Y     %H:%M")
+	end
 end

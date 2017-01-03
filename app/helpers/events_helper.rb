@@ -1,7 +1,5 @@
 module EventsHelper
-	def event_date(date)
-		Time.now.strftime("%e-%m-%Y     %H:%M")
-	end
+	
 
 	def time_in_minutes(date)
 		t = date.strftime("%H").to_i

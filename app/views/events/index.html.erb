@@ -22,7 +22,7 @@
         <th class="event" style="width: 10%">Miejsce</th>
         <th class="event" style="width: 25%">Idź do</th>
       </thead>
-      <% @events.each do |event| %>
+      <% @sorted.each do |event| %>
       <% if event.date >= DateTime.now %>
         <tr>
           <td class="event">
@@ -36,7 +36,7 @@
             <%= event.location %>
           </td>
           <td class="event">
-            <%= link_to "Pokaż", event_path(event.id), class: 'btn btn-primary' %>
+            <%= link_to "Pokaż", event_path(event.id), class: 'btn btn-info' %>
             <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tlusty') %>
               <%= link_to 'Edytuj', edit_event_path(event.id), class: 'btn btn-warning' %>
               <%= link_to 'Usuń', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
@@ -65,7 +65,7 @@
         <th class="event" style="width: 10%">Miejsce</th>
         <th class="event" style="width: 25%">Idź do</th>
       </thead>
-      <% @events.each do |event| %>
+      <% @sorted.each do |event| %>
       <% if event.date < DateTime.now %>
         <tr>
           <td class="event">
@@ -79,7 +79,7 @@
             <%= event.location %>
           </td>
           <td class="event">
-            <%= link_to "Pokaż", event_path(event.id), class: 'btn btn-primary' %>
+            <%= link_to "Pokaż", event_path(event.id), class: 'btn btn-info' %>
             <% if !current_user.nil? && (current_user.name == 'Michał Kaliniewicz' || current_user.name == 'Szymon Tlusty') %>
               <%= link_to 'Edytuj', edit_event_path(event.id), class: 'btn btn-warning' %>
               <%= link_to 'Usuń', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

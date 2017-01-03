@@ -22,11 +22,18 @@
 
     <%= f.hidden_field :user_id, value: @user.id %>
   
-
-  <div class="form-group">
-    <%= f.label 'Wybierz event', class: 'col-md-2 control-label' %>
-    <div class="col-md-10"><%= f.select :event_id, options_from_collection_for_select(@events, "id", "name", "date"), {}, {class: 'form-control'} %></div>
-  </div>
+  <% if @event.nil? %>
+    <div class="form-group">
+      <%= f.label 'Wybierz event', class: 'col-md-2 control-label' %>
+      <div class="col-md-10"><%= f.select :event_id, options_from_collection_for_select(@events, "id", "name"), {}, {class: 'form-control'} %></div>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.label 'Nazwa i data wydarzenia', class: 'col-md-2 control-label' %>
+      <div class="col-md-10"><h5><strong><%= @event.name %>  <%= event_date(@event.date) %></strong><h5></div>
+    </div>
+    <%= f.hidden_field :event_id, value: @event.id %>
+  <% end %>
 
   <div class="row">
     <div class="col-md-2 col-md-offset-5 text-center">

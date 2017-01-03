@@ -5,6 +5,10 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @games = current_user.games
+
+    if !params[:event_id].nil?
+      @event = params[:event_id]
+    end
   end
 
   # GET /games/1
@@ -16,6 +20,7 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
     @user = User.find(current_user.id)
+    
   end
 
   # GET /games/1/edit
@@ -58,6 +63,7 @@ class GamesController < ApplicationController
   # DELETE /games/1.json
   def destroy
     @game.destroy
+    @game.tables.destroy_all
     respond_to do |format|
       format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
       format.json { head :no_content }

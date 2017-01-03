@@ -18,6 +18,9 @@ class TablesController < ApplicationController
     @game = @user.games.find(params[:game])
     @table = Table.new
     @events = Event.all
+    if !params[:event_id].nil?
+      @event = Event.find(params[:event_id])
+    end
   end
 
   # GET /tables/1/edit
@@ -36,7 +39,7 @@ class TablesController < ApplicationController
 
     respond_to do |format|
       if @table.save
-        format.html { redirect_to events_path, notice: 'Table was successfully created.' }
+        format.html { redirect_to event_path(@table.event_id), notice: 'Table was successfully created.' }
         format.json { render :show, status: :created, location: @table }
       else
         format.html { render :new }

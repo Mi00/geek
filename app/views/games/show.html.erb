@@ -8,7 +8,7 @@
         <h3 class="text-center">Język: <%= @game.lang %></h3>
         <h3 class="text-center">Czas gry: <%= @game.game_time.to_s(:time) %></h3>
         <p><%= @game.description %></p>
-        <p class="text-center"><%= link_to 'Edytuj', edit_game_path(@game), class: 'btn btn-primary' %> |
+        <p class="text-center"><%= link_to 'Edytuj', edit_game_path(@game), class: 'btn btn-info' %> |
            <%= link_to 'Lista gier', games_path, class: 'btn btn-default' %>
         </p>
       </div>
