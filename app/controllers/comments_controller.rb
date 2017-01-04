@@ -19,9 +19,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @table = @comment.table_id
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @table, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to table_path(@table), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

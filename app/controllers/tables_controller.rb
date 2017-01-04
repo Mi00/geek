@@ -65,9 +65,10 @@ class TablesController < ApplicationController
   # DELETE /tables/1
   # DELETE /tables/1.json
   def destroy
+    @event = @table.event_id
     @table.destroy
     respond_to do |format|
-      format.html { redirect_to events_path, notice: 'Table was successfully destroyed.' }
+      format.html { redirect_to event_path(@event), notice: 'Table was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

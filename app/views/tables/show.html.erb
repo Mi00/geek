@@ -69,14 +69,15 @@
   <div id="comments">
     <%= render :partial => @table.comments %>
   </div>
-
+  <% if current_user %>
   <%= simple_form_for [@table, Comment.new] do |f| %>
     <div class="field">
       <%= f.text_area :body, class: "form-control" %>
     </div>
     <br>
     <div class="text-center">
-      <%= f.submit "Add Comment", class: "btn btn-primary" %>
+      <%= f.submit "Dodaj komentarz", class: "btn btn-primary" %>
     </div>
+  <% end %>
   <% end %>
 </div>
