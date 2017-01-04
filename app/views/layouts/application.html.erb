@@ -15,17 +15,20 @@
         <div class="col-md-2"><%= link_to "Wydarzenia", events_path, class: "btn btn-default navbar-btn btn-lg" %></div>
         <% if current_user %>
           <div class="col-md-2"><%= link_to "Moje gry", games_path, class: "btn btn-default navbar-btn btn-lg" %></div>
-          <div class="col-md-4 col-md-offset-2 text-right">
+          <div class="col-md-2 col-md-offset-1 text-center"><%= image_tag("geekon1.jpg", size: '70') %> </div> 
+          <div class="col-md-3 text-right">
             <h4>Witaj <strong><%= current_user.name %><%= image_tag current_user.image %></strong></h4>
           </div>
           <div class="col-md-2 text-left">  
             <%= link_to "Wyloguj sie", signout_path, id: "sign_out", class: 'btn btn-default navbar-btn btn-lg' %>
           </div>
         <% else %>
-          <div class="col-md-4 col-md-offset-6">
+          <div class="col-md-2 col-md-offset-3 text-center"><%= image_tag("geekon1.jpg", size: '70') %> </div>
+          <div class="col-md-4 col-md-offset-1 text-right">
           <%= link_to "Zaloguj mnie przez Facebook'a", "/auth/facebook", id: "sign_in", class: 'btn btn-default navbar-btn btn-lg' %>
           </div>
-        <% end %>        
+        <% end %> 
+              
       </div>
         <%= yield %>
     </div>
