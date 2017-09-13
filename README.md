@@ -1,25 +1,12 @@
-# README
+This application was made to organize board games meetings. 
+Their group is meets up every week(about 50 ppl).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Two organizers can create events.
 
-Things you may want to cover:
+You log in by facebok.
+You can create your games you own.
+You can create tables with game.
+You can join to the game and comment there. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# geek
+You can check how it works at:
+http://geekap.herokuapp.com/
